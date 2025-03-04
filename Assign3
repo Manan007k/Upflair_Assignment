@@ -1,0 +1,121 @@
+# 1. Lambda function to merge two lists into a dictionary
+merge_lists = lambda keys, values: dict(zip(keys, values))
+
+# Example usage
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+print(merge_lists(keys, values))
+
+# 2. Product class with discount functionality
+class Product:
+    discount_rate = 0.1  # Class variable
+    
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    
+    def discounted_price(self):
+        return self.price * (1 - Product.discount_rate)
+
+# Example usage
+p = Product("Laptop", 1000)
+print(p.discounted_price())
+
+# 3. Shape base class with inheritance
+import math
+class Shape:
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return math.pi * self.radius ** 2
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+
+# Example usage
+c = Circle(5)
+r = Rectangle(4, 6)
+print(c.area())
+print(r.area())
+
+# 4. Multiple inheritance with Person and Employee classes
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+class Employee:
+    def __init__(self, salary):
+        self.salary = salary
+
+class Manager(Person, Employee):
+    def __init__(self, name, salary, department):
+        Person.__init__(self, name)
+        Employee.__init__(self, salary)
+        self.department = department
+
+# Example usage
+m = Manager("Alice", 50000, "HR")
+print(m.name, m.salary, m.department)
+
+# 5. Polymorphism with play_sound function
+class Dog:
+    def make_sound(self):
+        return "Bark"
+
+class Cat:
+    def make_sound(self):
+        return "Meow"
+
+class Cow:
+    def make_sound(self):
+        return "Moo"
+
+def play_sound(animal):
+    print(animal.make_sound())
+
+# Example usage
+play_sound(Dog())
+play_sound(Cat())
+play_sound(Cow())
+
+# 6. Car Rental System with OOP
+class Vehicle:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        return f"{self.year} {self.brand} {self.model}"
+
+class Car(Vehicle):
+    def __init__(self, brand, model, year, seats):
+        super().__init__(brand, model, year)
+        self.seats = seats
+
+    def display_info(self):
+        return super().display_info() + f", Seats: {self.seats}"
+
+class Bike(Vehicle):
+    def __init__(self, brand, model, year, type_):
+        super().__init__(brand, model, year)
+        self.type_ = type_
+
+    def display_info(self):
+        return super().display_info() + f", Type: {self.type_}"
+
+# Example usage
+car = Car("Toyota", "Corolla", 2020, 5)
+bike = Bike("Yamaha", "R15", 2019, "Sport")
+print(car.display_info())
+print(bike.display_info())
